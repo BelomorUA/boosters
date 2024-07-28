@@ -13,10 +13,10 @@ class CountriesTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('countries')->insert([
-            ['name' => 'Canada', 'planned_gold' => 10000], // 10 T = 10000 kg
-            ['name' => 'USA', 'planned_gold' => 1000],    // 1 T = 1000 kg
-            ['name' => 'Germany', 'planned_gold' => 8000], // 8 T = 8000 kg
-            ['name' => 'Australia', 'planned_gold' => 900], // 900 kg
+            ['name' => 'Canada', 'planned_gold_mining' => 10000], // 10 T = 10000 kg
+            ['name' => 'USA', 'planned_gold_mining' => 1000],    // 1 T = 1000 kg
+            ['name' => 'Germany', 'planned_gold_mining' => 8000], // 8 T = 8000 kg
+            ['name' => 'Australia', 'planned_gold_mining' => 900], // 900 kg
         ]);
     }
 }

@@ -24,7 +24,7 @@ class ReportController extends Controller
                 GoldMining::create([
                     'company_id' => $company->id,
                     'date_time' => Carbon::now()->subDays($i),
-                    'weight' => rand(100, 250000) / 1000,
+                    'weight' => rand(10000, 250000) / 500,
                 ]);
             }
         }

@@ -14,61 +14,91 @@ Application interface consists of 3 tabs or pages: Countries, Companies, Leaders
 
 ## Installation
 
-1. Clone the repository
-
+1. Create Laravel project
 ```bash
-git clone https://github.com/BelomorUA/boosters.git
+composer create-project --prefer-dist laravel/laravel boosters
 ```
 
 2. Navigate to the project directory
-
 ```bash
 cd boosters
 ```
 
-3. Install the dependencies
+3. Clone the repository
+```bash
+git init
+git remote add origin https://github.com/BelomorUA/boosters.git
+git add .
+git commit -m "tmp commit"
+git reset --hard
+git fetch origin
+git merge -X theirs origin/master --allow-unrelated-histories
+```
 
+4. Install the dependencies
 ```bash
 composer install
 npm install
 ```
 
-4. Copy .env.example to .env and configure your environment variables
+5. Copy .env.example to .env and configure your environment variables
 
 ```bash
 cp .env.example .env
 ```
 
-5. Generate the application key
+6. Generate the application key
 
 ```bash
 php artisan key:generate
 ```
 
-6. Run the database migrations
+7. Run the database migrations
 ```bash
 php artisan migrate
 ```
 
-7. Seed the database with test data
+8. Seed the database with test data
 ```bash
 php artisan db:seed
 ```
 
-8. Build the front-end assets
+9. Build the front-end assets
 ```bash
 npm run dev
 ```
 
-9. Serve the application
+10. Serve the application
 ```bash
 php artisan serve
 ```
 
-10. Open the project in your browser
+11. Open the project in your browser
 Navigate to http://127.0.0.1:8000
 
+11. Open the Leaders page and generate temporary data(press once "Generate Data" button)
+http://127.0.0.1:8000/leaders
+
 ## Usage
+
+### Home Page
+
+The home page of the application provides a comprehensive overview of the gold mining statistics. It includes the following sections:
+
+1. **Number of Countries**: Displays the total number of countries available in the system.
+
+2. **Number of Companies in Each Country**: Lists each country with the corresponding number of companies operating within that country.
+
+3. **Total Mined Gold in Each Country**: Shows the total amount of gold mined in each country, aggregated from all companies in that country.
+
+4. **Monthly Report**: Presents a detailed table that indicates which countries met their gold mining plan for each month of the year 2024. The table includes:
+    - Year-Month
+    - Country Name
+    - Total Mined Gold (kg)
+    - Planned Gold Mining (kg)
+    - Status (Achieved or Not Achieved)
+
+5. **Gold Mining Over Time**: A line chart visualizing the total gold mined over time. This chart aggregates data by year and month, providing a clear view of the mining trends.
 
 ### Countries
 

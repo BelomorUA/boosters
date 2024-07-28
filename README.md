@@ -1,64 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Boosters
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
+Imagine you have the task from UN about world gold mining. You store data about all countries (country name and planned gold mining), companies (country, email) and all gold mining (by company, when it occurred and mined gold weight). You need an interface to manage countries data and companies and view a report. Last week you’ve been at the frontend development conference and heard that JSON REST API is the industry standard nowadays and you decided to create your own tool for your task using this approach.
 
-## About Laravel
+## Requirements
+There are four screens in the application:
+1. Country management
+2. Company management
+3. View all countries that mining more than planned weight
+4. From all companies that exceed planned mining weight view companies that mined more than others from the same company (Leaders).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Application interface consists of 3 tabs or pages: Countries, Companies, Leaders. It would be nice to see a single-page application here, but it’s not a requirement. Note, that also we’ve got some ideas on the look & feel of the application and components you could use (see below), we are flexible about the frontend implementation. You will not be judged based on the appearance of the interface.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Clone the repository
 
-## Learning Laravel
+```bash
+git clone https://github.com/BelomorUA/boosters.git
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. Navigate to the project directory
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+cd boosters
+```
 
-## Laravel Sponsors
+3. Install the dependencies
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+composer install
+npm install
+```
 
-### Premium Partners
+4. Copy .env.example to .env and configure your environment variables
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+cp .env.example .env
+```
 
-## Contributing
+5. Generate the application key
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+6. Run the database migrations
+```bash
+php artisan migrate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. Seed the database with test data
+```bash
+php artisan db:seed
+```
 
-## Security Vulnerabilities
+8. Build the front-end assets
+```bash
+npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+9. Serve the application
+```bash
+php artisan serve
+```
 
-## License
+10. Open the project in your browser
+Navigate to http://127.0.0.1:8000
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Usage
+
+### Countries
+
+Manage the list of countries and their planned gold mining.
+
+1. Navigate to the "Countries" tab.
+2. View the list of countries with their planned gold mining amounts.
+3. To add a new country, click the "Add" button, fill in the country name and planned gold mining amount, and submit the form.
+4. To edit an existing country, click the "Edit" button next to the country, update the information, and submit the form.
+5. To delete a country, click the "Delete" button next to the country.
+
+### Companies
+
+Manage the list of companies and their details.
+
+1. Navigate to the "Companies" tab.
+2. View the list of companies with their emails and associated countries.
+3. To add a new company, click the "Add" button, fill in the company name, email, and select the country from the dropdown, then submit the form.
+4. To edit an existing company, click the "Edit" button next to the company, update the information, and submit the form.
+5. To delete a company, click the "Delete" button next to the company.
+
+### Leaders
+
+View the report of countries that exceeded their planned gold mining and the top companies.
+
+1. Navigate to the "Leaders" tab.
+2. Select a month from the dropdown menu to view the report for that specific month.
+3. Click the "Show report" button to display the countries that exceeded their planned gold mining amounts for the selected month.
+4. Click the "Generate data" button to generate random mining data for the last 6 months based on predefined rules.
+5. View the list of companies that mined more than others from the same country, sorted by the amount of total mining weight from max to min.
